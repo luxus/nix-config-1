@@ -137,6 +137,7 @@ in
   };
 
   nixpkgs = {
+    config.firefox.enableFXCastBridge = true;
     config.allowUnfree = true;
     config.packageOverrides = _pkgs: {
       chrony = mypkgs.chrony;
