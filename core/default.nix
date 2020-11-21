@@ -83,7 +83,7 @@ in
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
   environment.etc."nixos/configuration.nix".source = dummyConfig;
-  environment.systemPackages = with pkgs; [ ntfs3g chrony ];
+  environment.systemPackages = with pkgs; [ ntfs3g chrony fx_cast_bridge ];
   home-manager.useGlobalPkgs = true;
   i18n.defaultLocale = "fr_CA.UTF-8";
   nix.maxJobs = "auto";
@@ -132,6 +132,7 @@ in
   };
 
   nixpkgs = {
+    config.firefox.enableFXCastBridge = true;
     config.allowUnfree = true;
     overlays = [
       (import (import ../nix).nixpkgs-mozilla)
