@@ -16,6 +16,9 @@
       (import ../nix).cpu_intel
       (import ../nix).ssd
 
+      ../dev/qemu.nix
+      ../dev/virt-manager.nix
+
       ../sway
       ../sway/trusted.nix
 
