@@ -32,6 +32,30 @@
     # "vm.swappiness" = 1;
   };
 
+  systemd.network = {
+    enable = true;
+    netdevs.br0.netdevConfig = {
+      Name = "br0";
+      Kind = "bridge";
+    };
+    networks = {
+      br0.extraConfig = ''
+      [Match]
+      Name = br0
+
+      [Network]
+      DHCP = both
+    '';
+      eno1.extraConfig = ''
+     [Match]
+     Name=eno1
+
+     [Network]
+     Bridge=br0
+   '';
+    };
+  };
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/ccb4db0b-1cb8-4d5f-be9a-8b20a5c63982";
