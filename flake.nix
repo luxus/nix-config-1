@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +16,13 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -37,7 +45,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, sops-nix, agenix, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem filterAttrs const recursiveUpdate optionalAttrs;
       inherit (builtins) readDir mapAttrs;
@@ -70,6 +78,7 @@
               config
 
               # ./common.nix
+              agenix.nixosModules.${system}.age
             ];
           specialArgs = {
             inputs = inputs;
@@ -110,6 +119,7 @@
                 pkgs.nix-build-uncached
                 pkgs.sops
                 sops-nix.packages.${system}.ssh-to-pgp
+                agenix.defaultPackage.${system}
               ];
 
             sopsPGPKeyDirs = [
