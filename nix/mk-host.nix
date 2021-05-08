@@ -6,7 +6,8 @@
 let
   inherit (nixpkgs.lib) pathExists optionalAttrs mapAttrs' nameValuePair;
   inherit (builtins) attrNames readDir;
-  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur nix-direnv;
+  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur nix-matrix-pinecone nix-direnv;
+  pkg_pinecone = import nix-matrix-pinecone;
 
   config = {
     allowUnfree = true;
@@ -22,6 +23,10 @@ let
     (import "${nixpkgs-cdda-mods}")
     emacs-overlay.overlay
     nur.overlay
+
+    (_self: _super: {
+      nix-matrix-pinecone = pkg_pinecone.main;
+    })
 
     (_self: _super: {
       nix-direnv = nix-direnv2;

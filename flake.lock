@@ -145,6 +145,22 @@
         "type": "github"
       }
     },
+    "nix-matrix-pinecone": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1620400326,
+        "narHash": "sha256-d5BDzGCQ+UhM00+Kse8l3SadQBQ4GclmaQaVzZB097A=",
+        "owner": "bbigras",
+        "repo": "nix-matrix-pinecone",
+        "rev": "f88f0bc3c16d6d7e93f1ce013a38d3ec029d0a83",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "repo": "nix-matrix-pinecone",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1619336929,
@@ -236,6 +252,7 @@
         "impermanence": "impermanence",
         "naersk": "naersk",
         "nix-direnv": "nix-direnv",
+        "nix-matrix-pinecone": "nix-matrix-pinecone",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",
