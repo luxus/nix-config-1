@@ -7,6 +7,9 @@ let
   inherit (nixpkgs.lib) pathExists optionalAttrs mapAttrs' nameValuePair;
   inherit (builtins) attrNames readDir;
   inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur nix-matrix-pinecone;
+  # pkgs = import nixpkgs { };
+  z1 = import inputs.trustix { };
+  z2 = z1.packages.trustix;
 
   config = {
     allowUnfree = true;
@@ -23,6 +26,9 @@ let
     (_self: _super: {
       inherit nix-matrix-pinecone;
     })
+    (_self: _super: {
+      trustix2 = z2;
+    })
   ];
 in
 nixpkgs.lib.nixosSystem {
@@ -33,6 +39,7 @@ nixpkgs.lib.nixosSystem {
     impermanence.nixosModules.impermanence
     home-manager.nixosModules.home-manager
     sops-nix.nixosModules.sops
+    "${inputs.trustix}/nixos"
 
     ({
       networking.hosts = mapAttrs' (n: v: nameValuePair v.hostname [ n ]) (import ./hosts.nix);

@@ -291,7 +291,8 @@
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "trustix": "trustix"
       }
     },
     "sops-nix": {
@@ -311,6 +312,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "trustix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622141028,
+        "narHash": "sha256-TYUynVrlI9BNFTLXi0FBuyS5mok8yuSs867w+jsid6Q=",
+        "owner": "tweag",
+        "repo": "trustix",
+        "rev": "9bf6f32ab9b28c49fdc12c6e7a847a2b6dc1aa00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tweag",
+        "repo": "trustix",
         "type": "github"
       }
     }

@@ -47,6 +47,11 @@
       flake = false;
     };
 
+    trustix = {
+      url = "github:tweag/trustix";
+      flake = false;
+    };
+
     nix-matrix-pinecone = {
       url = "github:bbigras/nix-matrix-pinecone";
       inputs = {

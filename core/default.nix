@@ -18,6 +18,32 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
 
+  services.trustix = {
+    enable = true;
+
+    signers.bbigras = {
+      type = "ed25519";
+      ed25519 = {
+        private-key-path = "/home/bbigras/nix-config/trustix-priv";
+      };
+    };
+
+    publishers = [
+      {
+        signer = "bbigras";
+        protocol = "nix";
+        publicKey = {
+          type = "ed25519";
+          # Contents of the generated trustix-pub
+          pub = "txxI+6jKg986e0abwQnqmqBl8TEfXgARG9qJAGoMXUg=";
+        };
+      }
+    ];
+  };
+
+  # Push local builds via the post-build hook
+  services.trustix-nix-build-hook.enable = true;
+
   environment = {
     pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs; [ ntfs3g ];
