@@ -8,6 +8,7 @@
     "https://nix-community.cachix.org"
     "https://nix-on-droid.cachix.org"
     "https://pre-commit-hooks.cachix.org"
+    "https://nickel.cachix.org"
   ];
   nixConfig.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -18,6 +19,7 @@
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+    "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
   ];
 
   inputs = {
@@ -117,26 +119,47 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    nickel = {
+      url = "github:tweag/nickel";
+      inputs = {
+        flake-utils.follows = "utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    nickel-nix = {
+      url = "github:nickel-lang/nickel-nix/a0959d10bd59e9f4367451cccaeac16e5529798d";
+      inputs = {
+        flake-utils.follows = "utils";
+        nixpkgs.follows = "nixpkgs";
+        nickel.follows = "nickel";
+      };
+    };
   };
 
-  outputs = { self, nixpkgs, utils, ... }@inputs:
+  outputs = { self, nixpkgs, utils, nickel-nix, ... }@inputs:
     {
       deploy = import ./nix/deploy.nix inputs;
       overlay = import ./nix/overlay.nix inputs;
     }
-    // utils.lib.eachDefaultSystem (system: {
-      checks = import ./nix/checks.nix inputs system;
+    // utils.lib.eachDefaultSystem (system:
+      let
+        importNcl = nickel-nix.packages.${system}.importNcl;
+      in
+      {
+        checks = import ./nix/checks.nix inputs system;
 
-      devShell = import ./nix/dev-shell.nix inputs system;
+        devShell = importNcl ./nix/dev-shell.ncl inputs;
 
-      nixpkgs = import nixpkgs {
-        inherit system;
-        overlays = [ self.overlay ];
-        config.allowUnfree = true;
-      };
+        nixpkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlay ];
+          config.allowUnfree = true;
+        };
 
-      packages.hosts = import ./nix/join-host-drvs.nix inputs system;
+        packages.hosts = import ./nix/join-host-drvs.nix inputs system;
 
-      defaultPackage = self.packages.${system}.hosts;
-    });
+        defaultPackage = self.packages.${system}.hosts;
+      });
 }
