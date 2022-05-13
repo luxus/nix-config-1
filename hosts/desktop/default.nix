@@ -46,7 +46,7 @@ rec {
       # ../../dev/rust-embeded.nix
       ../../dev/adb.nix
 
-      ../../users/bbigras
+      ../../users/luxus
       # ./hass-podman.nix
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
@@ -54,7 +54,7 @@ rec {
   nix = {
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
-      trusted-users = bbigras
+      trusted-users = luxus
     '';
     settings = {
       extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
@@ -78,9 +78,9 @@ rec {
     };
   };
 
-  home-manager.users.bbigras = {
+  home-manager.users.luxus = {
     imports = [
-      ../../users/bbigras/trusted
+      ../../users/luxus/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
@@ -100,7 +100,7 @@ rec {
   networking.networkmanager.enable = false;
   programs.thefuck.enable = true;
   time.hardwareClockInLocalTime = true;
-  users.users.bbigras.packages = [ pkgs.retroarchBare ];
+  users.users.luxus.packages = [ pkgs.retroarchBare ];
 
   services.jellyfin.enable = true;
 

@@ -1,10 +1,10 @@
 {
-  accounts.email.accounts.bbigras = {
+  accounts.email.accounts.luxus = {
     primary = true;
     flavor = "gmail.com";
-    realName = "Bruno Bigras";
-    address = "bigras.bruno@gmail.com";
-    userName = "bigras.bruno@gmail.com";
+    realName = "Kai Loehnert";
+    address = "luxuspur@gmail.com";
+    userName = "luxuspur@gmail.com";
     notmuch.enable = true;
 
     lieer.enable = true;

@@ -18,7 +18,7 @@ let
     work = {
       type = "nixos";
       localSystem = "x86_64-linux";
-      address = "bbigras-work";
+      address = "luxus-work";
     };
   };
 in

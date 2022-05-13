@@ -28,7 +28,7 @@ rec {
       # ../../dev/rust-embeded.nix
       ../../dev/adb.nix
 
-      ../../users/bbigras
+      ../../users/luxus
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
 
@@ -128,8 +128,8 @@ rec {
       "/var/lib/docker"
       "/var/lib/libvirt"
       "/var/lib/ipfs"
-      "/home/bbigras/.dropbox-dist"
-      "/home/bbigras/.dropbox-hm"
+      "/home/luxus/.dropbox-dist"
+      "/home/luxus/.dropbox-hm"
       "/root/.cache/restic"
       # "/var/cache/libvirt"
       #     "/var/lib/bluetooth"
@@ -145,9 +145,9 @@ rec {
     ];
   };
 
-  home-manager.users.bbigras = {
+  home-manager.users.luxus = {
     imports = [
-      ../../users/bbigras/trusted
+      ../../users/luxus/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
@@ -182,7 +182,7 @@ rec {
       };
     };
 
-    home.persistence."/persist/home/bbigras" = {
+    home.persistence."/persist/home/luxus" = {
       directories = [
         ".cache/mozilla"
         ".cache/restic"

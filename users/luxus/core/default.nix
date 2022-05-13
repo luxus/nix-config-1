@@ -3,7 +3,7 @@
     ./atuin.nix
     ./btop.nix
     ./git.nix
-    ./emacs.nix
+    # ./emacs.nix
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix
@@ -24,11 +24,11 @@
       remmina
 
       # espeak
-      socat
-      websocat
+      # socat
+      # websocat
 
       # media
-      gimp
+      # gimp
       mediainfo
       pavucontrol
 
@@ -37,7 +37,7 @@
 
       # twitch
       # streamlink
-      chatterino2
+      # chatterino2
 
       # comm
       discord
@@ -51,13 +51,13 @@
       gist
       gitAndTools.gh
       colordiff
-      wrangler # cloudflare workers
+      # wrangler # cloudflare workers
       tcpdump
 
       # net
       croc
-      webwormhole
-      qbittorrent
+      # webwormhole
+      # qbittorrent
       # youtube-dl
       wireshark
       dnsutils
@@ -95,10 +95,10 @@
 
       # Android
       # android-studio
-      scrcpy
+      # scrcpy
 
       # security?
-      bitwarden-cli
+      # bitwarden-cli
 
       # backup
       restic
@@ -113,44 +113,44 @@
 
       # rust
       cargo
-      cargo-audit
-      cargo-outdated
+      # cargo-audit
+      # cargo-outdated
       # cargo-asm
       # cargo-bloat
       # cargo-crev
-      cargo-expand
-      cargo-flamegraph
+      # cargo-expand
+      # cargo-flamegraph
       # cargo-fuzz
       # cargo-geiger
-      cargo-sweep
-      cargo-tarpaulin
-      cargo-udeps
+      # cargo-sweep
+      # cargo-tarpaulin
+      # cargo-udeps
 
       # games
       # my_dwarf_fortress
-      starsector
+      # starsector
 
       compsize
 
       pv
-      rclone
+      # rclone
 
       asciinema # record the terminal
-      docker-compose # docker manager
+      # docker-compose # docker manager
       ncdu # disk space info (a better du)
       prettyping # a nicer ping
       rnix-lsp # nix lsp server
 
-      xdragon
+      # xdragon
       feh # light-weight image viewer
       killall
-      ghidra-bin
+      # ghidra-bin
 
       unar
-      dbeaver
+      # dbeaver
       obsidian
-      cloudflared
-      tmate
+      # cloudflared
+      # tmate
       josm
       ntp
 
@@ -159,14 +159,14 @@
       gopls
 
       # remote
-      anydesk
-      zoom-us
-      teams
+      # anydesk
+      # zoom-us
+      # teams
       # kubernetes
-      k9s
-      kubectl
+      # k9s
+      # kubectl
       # istioctl
-      kubernetes-helm
+      # kubernetes-helm
 
       anytype
       pueue
@@ -174,12 +174,12 @@
       # perf
       sysstat
 
-      ventoy-bin
-      docker-credential-helpers
-      freeplane
+      # ventoy-bin
+      # docker-credential-helpers
+      # freeplane
 
-      prusa-slicer
-      super-slicer
+      # prusa-slicer
+      # super-slicer
     ];
   };
 
@@ -219,13 +219,13 @@
   };
 
   services = {
-    dropbox.enable = true;
+    # dropbox.enable = true;
     # kdeconnect.enable = true;
     # spotifyd.enable = true;
-    syncthing.enable = true;
+    # syncthing.enable = true;
     easyeffects.enable = true;
     pantalaimon = {
-      enable = true;
+      enable = false;
       settings = {
         Default = {
           # LogLevel = "Debug";
@@ -242,7 +242,7 @@
     systembus-notify.enable = true;
   };
 
-  home.language.base = "fr_CA.UTF-8";
+  home.language.base = "en_US.UTF-8";
 
   systemd.user.startServices = "sd-switch";
 

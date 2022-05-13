@@ -1,22 +1,20 @@
 {
-  description = "bbigras's NixOS config";
+  description = "luxus's NixOS config";
   nixConfig.substituters = [
     "https://cache.nixos.org"
-    "https://bbigras-nix-config.cachix.org"
+    "https://luxus-nix-config.cachix.org"
     # "https://cache.ngi0.nixos.org"
-    "https://dendrite-demo-pinecone.cachix.org"
+    # "https://dendrite-demo-pinecone.cachix.org"
     "https://nix-community.cachix.org"
-    "https://nix-on-droid.cachix.org"
+    # "https://nix-on-droid.cachix.org"
     "https://pre-commit-hooks.cachix.org"
   ];
   nixConfig.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
+    "luxus.cachix.org-1:eW/nJy5bZow2D3wf59qy7a9mfiZNjshIK/BozwgIlLU="
     # "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
   ];
 
@@ -72,48 +70,8 @@
 
     nixos-hardware.url = "nixos-hardware";
     nur.url = "nur";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-
-    emacs-plz = {
-      url = "github:alphapapa/plz.el";
-      flake = false;
-    };
-
-    emacs-ement-extras = {
-      url = "gitlab:akater/emacs-ement-extras/release";
-      flake = false;
-    };
-
-    defmacro-gensym = {
-      url = "gitlab:akater/defmacro-gensym";
-      flake = false;
-    };
-
-    emacs-ement = {
-      url = "github:alphapapa/ement.el";
-      flake = false;
-    };
-
-    dendrite-demo-pinecone = {
-      url = "github:bbigras/dendrite-demo-pinecone";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "utils";
-        flake-compat.follows = "flake-compat";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-      };
-    };
 
     templates.url = "github:NixOS/templates";
-
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
-      inputs = {
-        flake-utils.follows = "utils";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
   };
 
   outputs = { self, nixpkgs, utils, ... }@inputs:

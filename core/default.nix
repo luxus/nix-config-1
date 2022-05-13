@@ -37,7 +37,7 @@ in
     verbose = true;
   };
 
-  i18n.defaultLocale = "fr_CA.UTF-8";
+  i18n.defaultLocale = "en-US.UTF-8";
 
   networking = {
     firewall = {
@@ -72,12 +72,12 @@ in
       ln -sv ${../nix/overlays} $out/overlays
     '';
 
-    stateVersion = "21.05";
+    stateVersion = "22.05";
   };
 
   systemd.enableUnifiedCgroupHierarchy = true;
 
-  time.timeZone = "America/Montreal";
+  time.timeZone = "Europe/Paris";
 
   services.flatpak.enable = true;
 

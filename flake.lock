@@ -72,13 +72,13 @@
       "locked": {
         "lastModified": 1652205974,
         "narHash": "sha256-bcs2zbKfcS22iO62tn/yL2MsJ7cXhKz2eb7Us5jfX7Q=",
-        "owner": "bbigras",
+        "owner": "luxus",
         "repo": "dendrite-demo-pinecone",
         "rev": "b98f97522c0d6998fce6c62b250fac9d9eb79b2e",
         "type": "github"
       },
       "original": {
-        "owner": "bbigras",
+        "owner": "luxus",
         "repo": "dendrite-demo-pinecone",
         "type": "github"
       }
