@@ -1,6 +1,7 @@
 { config, impermanence, lib, pkgs, ... }:
 with lib;
 {
+users.users.root.initialHashedPassword = "$6$I2LIdqsjBKTilFex$pUn6l2RxxP5LUyXYgbIV26FkNLWw79IB6nxEjSaKHNIQHo5ynbIM0rjT8oOiITdLxrMoR53oKwTIifOK9F1SO0";
   users.users.luxus = {
     createHome = true;
     extraGroups = [ "wheel" "dialout" ]
@@ -17,12 +18,16 @@ with lib;
       ++ optionals config.services.flatpak.enable [ "flatpak" ]
       ++ optionals config.services.ipfs.enable [ "ipfs" ];
     isNormalUser = true;
-    shell = mkIf config.programs.zsh.enable pkgs.zsh;
+    initialHashedPassword = "$6$I2LIdqsjBKTilFex$pUn6l2RxxP5LUyXYgbIV26FkNLWw79IB6nxEjSaKHNIQHo5ynbIM0rjT8oOiITdLxrMoR53oKwTIifOK9F1SO0";
+    shell = mkIf config.programs.fish.enable pkgs.fish;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 "AAAAC3NzaC1lZDI1NTE5AAAAID/AjBtg8D4lMoBkp2L3dDb5EmkOGr1v/Ns1wwRoKds4 luxuspur@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/AjBtg8D4lMoBkp2L3dDb5EmkOGr1v/Ns1wwRoKds4 luxuspur@gmail.com"
     ];
   };
-
+home-manager.users.root.programs.git = {
+  enable = true;
+  extraConfig.safe.directory = "/home/luxus/nix-config";
+};
   home-manager.users.luxus = {
     imports = [
       impermanence.home-manager.impermanence

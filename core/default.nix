@@ -9,14 +9,16 @@ in
   imports = [
     ./aspell.nix
     ./nix.nix
+    ./fish.nix
+    ./neovim.nix
     ./openssh.nix
-    ./resolved.nix
+    #./resolved.nix
     ./tmux.nix
     ./xdg.nix
-    ./yggdrasil.nix
-    ./zsh.nix
-    ./solo2.nix
-    ./dendrite-demo-pinecone.nix
+    #./yggdrasil.nix
+    #./zsh.nix
+    #./solo2.nix
+    #./dendrite-demo-pinecone.nix
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];
@@ -24,11 +26,77 @@ in
   environment = {
     etc."nixos/configuration.nix".source = dummyConfig;
     systemPackages = with pkgs; [
-      ntfs3g
+    #  ntfs3g
       foot.terminfo
       btop
-      minikube
-      docker-machine-kvm2
+            curl
+      libvterm-neovim
+      neovim
+      libtool automake autoconf
+      nixpkgs-fmt
+      vim
+      wget
+      ssh-copy-id
+      aria2
+      ssh-import-id
+      fail2ban
+      sshguard
+      vim
+      zathura
+      lazygit
+      nixfmt
+      ncdu
+      luaPackages.luacheck
+      nvd
+      exa
+      ripgrep
+      sqlite
+      fzf
+      fd
+      prettyping
+      asdf
+      nodejs-17_x
+      cargo
+      nerd-font-patcher
+      unzip
+      #    spotifyd
+      hyperfine
+      zoxide
+      bottom
+      mcfly
+      bandwhich
+      gitui
+      wget
+      #  pcre2
+      curl
+      black
+      luarocks
+      shellcheck
+      selene
+      statix
+      vim-vint
+      mosh
+      hadolint
+      vale
+      foot
+        pavucontrol
+      ncspot
+      kmon
+      nix-index
+      pciutils
+      uutils-coreutils
+      stylua
+      shfmt
+      gotools
+      ruby
+      (python3.withPackages (ps: [ ps.setuptools ps.pyls-isort ]))
+      chafa
+      tangram
+      parted
+      cantata
+#      minikube
+ #     docker-machine-kvm2
+
     ];
   };
 
@@ -37,17 +105,22 @@ in
     verbose = true;
   };
 
-  i18n.defaultLocale = "en-US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+  LC_TIME = "de_DE.UTF-8";
 
-  networking = {
-    firewall = {
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
-    };
-    useDHCP = false;
-    useNetworkd = true;
-    wireguard.enable = true;
-  };
+};
+
+
+  #networking = {
+   # firewall = {
+    #  trustedInterfaces = [ "tailscale0" ];
+    #  allowedUDPPorts = [ config.services.tailscale.port ];
+    #};
+    #useDHCP = false;
+    #useNetworkd = true;
+    #wireguard.enable = true;
+  #};
 
   nix.nixPath = [
     "nixos-config=${dummyConfig}"
@@ -56,15 +129,14 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "electron-13.6.9" ];
 
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
   };
 
-  services.tailscale.enable = true;
-  systemd.services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
+  #services.tailscale.enable = true;
+  #systemd.services.tailscaled.after = [ "network-online.target"  ];
 
   system = {
     extraSystemBuilderCmds = ''
@@ -79,7 +151,7 @@ in
 
   time.timeZone = "Europe/Paris";
 
-  services.flatpak.enable = true;
+#  services.flatpak.enable = true;
 
   fonts.fonts = with pkgs; [
     fira-code

@@ -4,15 +4,12 @@
     "https://cache.nixos.org"
     "https://luxus.cachix.org"
     # "https://cache.ngi0.nixos.org"
-    # "https://dendrite-demo-pinecone.cachix.org"
     "https://nix-community.cachix.org"
-    # "https://nix-on-droid.cachix.org"
     "https://pre-commit-hooks.cachix.org"
   ];
   nixConfig.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "luxus.cachix.org-1:eW/nJy5bZow2D3wf59qy7a9mfiZNjshIK/BozwgIlLU="
-    # "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
@@ -27,7 +24,9 @@
     };
 
     nixpkgs.url = "nixpkgs/nixos-unstable";
-
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+};
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;

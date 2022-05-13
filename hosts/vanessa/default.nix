@@ -24,7 +24,7 @@ rec {
     [
       ../../core
       ../../dev
-      ../../dev/virt-manager.nix
+#      ../../dev/virt-manager.nix
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-desktop.nix
@@ -57,8 +57,8 @@ rec {
       trusted-users = luxus
     '';
     settings = {
-      extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
-      system-features = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
+ #     extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
+ #     system-features = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
     };
   };
 
@@ -90,9 +90,8 @@ rec {
   powerManagement.cpuFreqGovernor = "performance";
 
   sops.secrets = {
-    restic-desktop-password.sopsFile = ./restic-desktop.yaml;
-    restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
-    yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
+  #  restic-desktop-password.sopsFile = ./restic-desktop.yaml;
+  #  restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
   };
 
   # hardware.enableRedistributableFirmware = true;
@@ -104,37 +103,37 @@ rec {
 
   #services.jellyfin.enable = true;
 
-  services.ipfs = {
-    enable = true;
-    enableGC = true;
-    localDiscovery = true;
-    gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
-    extraFlags = [
-      "--enable-pubsub-experiment"
-      "--enable-namesys-pubsub"
-    ];
-  };
+  #services.ipfs = {
+  #  enable = true;
+  #  enableGC = true;
+  #  localDiscovery = true;
+  #  gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
+  #  extraFlags = [
+  #    "--enable-pubsub-experiment"
+  #    "--enable-namesys-pubsub"
+  #  ];
+  #};
 
-  systemd.network = {
-    enable = true;
-    networks = {
-      lan = {
-        DHCP = "yes";
-        matchConfig.Name = "enp3s0";
-        # domains = [ "~." ];
-        dhcpV4Config = { UseDNS = false; };
-        dns = [
-          # https://developers.cloudflare.com/1.1.1.1/dns-over-tls
-          "1.1.1.1#cloudflare-dns.com"
-          "1.0.0.1#cloudflare-dns.com"
-        ];
-        networkConfig = {
-          # DNSSEC = true;
-          DNSOverTLS = true;
-        };
-      };
-    };
-  };
+  #systemd.network = {
+  #  enable = true;
+  #  networks = {
+   #   lan = {
+   #     DHCP = "yes";
+   #     matchConfig.Name = "enp3s0";
+   #     # domains = [ "~." ];
+   #     dhcpV4Config = { UseDNS = false; };
+   #     dns = [
+   #       # https://developers.cloudflare.com/1.1.1.1/dns-over-tls
+   #       "1.1.1.1#cloudflare-dns.com"
+   #       "1.0.0.1#cloudflare-dns.com"
+   #     ];
+   #     networkConfig = {
+   #       # DNSSEC = true;
+   #       DNSOverTLS = true;
+   #     };
+   #   };
+   # };
+  #};
 
   services.xserver = {
     autorun = true;
@@ -144,10 +143,10 @@ rec {
 
 
   # networking.firewall.enable = false;
-  networking.firewall.allowedTCPPorts = [
-    9977
-    9988
-  ];
+  #networking.firewall.allowedTCPPorts = [
+  #  9977
+  #  9988
+  #];
   #   22000
   #   6680
   #   51413 # transmission
@@ -201,8 +200,8 @@ rec {
 
       "/etc/ssh/ssh_host_ed25519_key"
       "/etc/ssh/ssh_host_ed25519_key.pub"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
+      #"/etc/ssh/ssh_host_rsa_key"
+      #"/etc/ssh/ssh_host_rsa_key.pub"
     ];
   };
 
@@ -212,7 +211,7 @@ rec {
 
     # We first mount the btrfs root to /mnt
     # so we can manipulate btrfs subvolumes.
-    mount -o subvol=/ /dev/disk/by-uuid/ /mnt
+    mount -o subvol=/ /dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499 /mnt
 
     # While we're tempted to just delete /root and create
     # a new snapshot from /root-blank, /root is already

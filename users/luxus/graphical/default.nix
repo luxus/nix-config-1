@@ -2,7 +2,7 @@
   imports = [
     ./alacritty.nix
     ./common.nix
-    ./firefox.nix
+#    ./firefox.nix
     ./mpv.nix
     ./redshift.nix
     ./mime.nix
@@ -13,6 +13,7 @@
       blueman
       gammastep
       gnome.adwaita-icon-theme
+#      neovim-nightly
       hicolor-icon-theme
       libnotify
       lollypop

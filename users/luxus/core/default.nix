@@ -6,7 +6,7 @@
     # ./emacs.nix
     ./tmux.nix
     ./xdg.nix
-    ./zsh.nix
+#    ./zsh.nix
     ./taskwarrior.nix
   ];
 
@@ -20,8 +20,9 @@
 
       ripgrep
 
-      google-chrome
+ #     google-chrome
       remmina
+      brave
 
       # espeak
       # socat
@@ -92,6 +93,7 @@
       bandwhich
       dogdns
       btop
+      starship
 
       # Android
       # android-studio

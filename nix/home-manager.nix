@@ -32,7 +32,7 @@ let
       inherit homeDirectory username;
       configuration = genModules hostName;
       pkgs = self.nixpkgs.${localSystem};
-      stateVersion = "21.11";
+      stateVersion = "22.05";
       system = localSystem;
     };
 in
