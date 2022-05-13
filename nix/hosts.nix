@@ -5,20 +5,20 @@ let
     listToAttrs (concatMap (name: let value = set.${name}; in if pred name value then [{ inherit name value; }] else [ ]) (attrNames set));
 
   hosts = {
-    desktop = {
+    vanessa = {
       type = "nixos";
       localSystem = "x86_64-linux";
-      address = "desktop";
+      address = "vanessa";
     };
-    laptop = {
+    emily = {
       type = "nixos";
       localSystem = "x86_64-linux";
-      address = "laptop";
+      address = "emily";
     };
     work = {
       type = "nixos";
       localSystem = "x86_64-linux";
-      address = "bbigras-work";
+      address = "work";
     };
   };
 in

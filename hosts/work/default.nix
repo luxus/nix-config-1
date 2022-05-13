@@ -22,7 +22,7 @@ in
       ../../graphical/trusted.nix
       ../../dev/virt-manager.nix
 
-      ../../users/bbigras
+      ../../users/luxus
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -34,9 +34,9 @@ in
 
   virtualisation.docker.enable = true;
 
-  home-manager.users.bbigras = {
+  home-manager.users.luxus = {
     imports = [
-      ../../users/bbigras/trusted
+      ../../users/luxus/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
   };
@@ -58,10 +58,10 @@ in
   services.yggdrasil.enable = lib.mkForce false;
 
   networking = {
-    hostName = "bbigras-work";
+    hostName = "luxus-work";
   };
 
-  home-manager.users.bbigras = {
+  home-manager.users.luxus = {
     wayland.windowManager.sway = {
       config = {
         input = {

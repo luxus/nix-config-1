@@ -10,12 +10,12 @@
     };
     package = pkgs.gitFull;
     lfs.enable = false;
-    userEmail = "bigras.bruno@gmail.com";
-    userName = "Bruno Bigras";
+    userEmail = "luxuspur@gmail.com";
+    userName = "luxus";
     extraConfig = {
       diff.colorMoved = "default";
       difftool.prompt = true;
-      github.user = "bbigras";
+      github.user = "luxus";
       init.defaultBranch = "main";
       merge.conflictstyle = "zdiff3";
       mergetool.prompt = true;
@@ -23,8 +23,8 @@
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
       diff.tool = "diffsitter";
       # difftool.prompt = false;
-      difftool.difftastic.cmd = "/home/bbigras/.cargo/bin/difftastic \"$LOCAL\" \"$REMOTE\"";
-      difftool.diffsitter.cmd = "/home/bbigras/.cargo/bin/diffsitter \"$LOCAL\" \"$REMOTE\"";
+      difftool.difftastic.cmd = "/home/luxus/.cargo/bin/difftastic \"$LOCAL\" \"$REMOTE\"";
+      difftool.diffsitter.cmd = "/home/luxus/.cargo/bin/diffsitter \"$LOCAL\" \"$REMOTE\"";
     };
 
     aliases = {

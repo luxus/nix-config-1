@@ -1,4 +1,4 @@
-# nix-config [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) [![ci](https://github.com/bbigras/nix-config/actions/workflows/ci.yaml/badge.svg)](https://github.com/bbigras/nix-config/actions/workflows/ci.yaml)
+# nix-config [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) [![ci](https://github.com/luxus/nix-config/actions/workflows/ci.yaml/badge.svg)](https://github.com/luxus/nix-config/actions/workflows/ci.yaml)
 
 WIP
 
@@ -12,7 +12,7 @@ WIP
   - full disk "wipe" on laptop
   - all except /home wipe on desktop
 - Full disk encryption on laptop
-- [emacs-init module](https://gitlab.com/rycee/nur-expressions/blob/master/hm-modules/emacs-init.nix) for home-manager. See `users/bbigras/dev/emacs.nix`
+- [emacs-init module](https://gitlab.com/rycee/nur-expressions/blob/master/hm-modules/emacs-init.nix) for home-manager. See `users/luxus/dev/emacs.nix`
 - overlays
   - emacs-overlay
   - nixpkgs-mozilla

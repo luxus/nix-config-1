@@ -16,14 +16,14 @@
     tmux
   ];
 
-  nix.trustedUsers = [ "root" "bbigras" ];
+  nix.trustedUsers = [ "root" "luxus" ];
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
 
-  users.users.bbigras = {
+  users.users.luxus = {
     createHome = true;
     isNormalUser = true;
     extraGroups = [
