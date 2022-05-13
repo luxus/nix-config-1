@@ -8,46 +8,50 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "wl" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
       fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" "noatime" ];
+      options = [ "noatime" "compress=zstd" "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
       fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = [ "noatime" "compress=zstd" "subvol=home" ];
     };
 
   fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
       fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+      options = [ "noatime" "compress=zstd" "subvol=persist" ];
       neededForBoot = true;
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
+      fsType = "btrfs";
+      options = [ "noatime" "compress=zstd"  "subvol=nix" ];
     };
 
   fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
       fsType = "btrfs";
-      options = [ "subvol=log" "compress=zstd" "noatime" ];
+      options = [ "noatime" "compress=zstd" "subvol=log" ];
       neededForBoot = true;
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/86C4-06EB";
+      fsType = "vfat";
+    };
+
   fileSystems."/mnt/btr_pool" =
-    {
-      device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+    { device = "/dev/disk/by-uuid/443b5b30-750a-4501-85b8-6655ecd4f499";
       fsType = "btrfs";
       options = [
         "subvolid=5"
@@ -56,20 +60,19 @@
       ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5E29-41EB";
-      fsType = "vfat";
-    };
+  swapDevices = [ ];
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/a89fdadd-b89a-45be-a326-6ba6762e9d4c"; }
-    ];
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = lib.mkDefault false;
-  networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # high-resolution display
+  hardware.video.hidpi.enable = lib.mkDefault true;
 }

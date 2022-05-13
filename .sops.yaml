@@ -1,15 +1,15 @@
 keys:
-  - &bbigras 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
-  - &desktop 044d18dc13bcddbbb441d6dfec2814bc0baba24c
+  - &luxus age1ncepfcrzfep624tpanhqfflafznh7ftuqffv0nfq24jhv3dwx40sltjkad
+  - &vanessa age1ncepfcrzfep624tpanhqfflafznh7ftuqffv0nfq24jhv3dwx40sltjkad
   - &laptop 044563484de3f8a04eab2fa2a1f1884c176b12c3
   - &work 1d848bac4d07e12426f76ce9eac9bb416ff96587
 
 creation_rules:
-  - path_regex: hosts/desktop/restic-desktop.yaml
+  - path_regex: hosts/vanessa/restic-vanessa.yaml
     key_groups:
-      - pgp:
-        - *bbigras
-        - *desktop
+      - age:
+        - *luxus
+        - *vanessa
   - path_regex: hosts/laptop/restic-laptop.yaml
     key_groups:
       - pgp:

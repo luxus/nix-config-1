@@ -21,68 +21,6 @@
         "type": "github"
       }
     },
-    "defmacro-gensym": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1641191735,
-        "narHash": "sha256-L8z9opNtjEimf3Jj2upCHTulV7NmsXjsoSkwG+9jHNc=",
-        "owner": "akater",
-        "repo": "defmacro-gensym",
-        "rev": "c80dcc6eb9f9423b1668d413595b747abac135ea",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "akater",
-        "repo": "defmacro-gensym",
-        "type": "gitlab"
-      }
-    },
-    "dendrite": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1652186472,
-        "narHash": "sha256-BD7dF2GknapHn+xWTGnpJCXE5RXcwJcB/1mCnJx5uM4=",
-        "owner": "matrix-org",
-        "repo": "dendrite",
-        "rev": "6db08b2874307c516b10ef9c9e996807fbfdb1ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "matrix-org",
-        "repo": "dendrite",
-        "type": "github"
-      }
-    },
-    "dendrite-demo-pinecone": {
-      "inputs": {
-        "dendrite": "dendrite",
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pre-commit-hooks": [
-          "pre-commit-hooks"
-        ]
-      },
-      "locked": {
-        "lastModified": 1652205974,
-        "narHash": "sha256-bcs2zbKfcS22iO62tn/yL2MsJ7cXhKz2eb7Us5jfX7Q=",
-        "owner": "luxus",
-        "repo": "dendrite-demo-pinecone",
-        "rev": "b98f97522c0d6998fce6c62b250fac9d9eb79b2e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "luxus",
-        "repo": "dendrite-demo-pinecone",
-        "type": "github"
-      }
-    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": [
@@ -109,74 +47,6 @@
         "type": "github"
       }
     },
-    "emacs-ement": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1652426824,
-        "narHash": "sha256-kQ/XgZd4i5xmAVpqnPJq+egIFWCJbqgs6K+t/md0nWw=",
-        "owner": "alphapapa",
-        "repo": "ement.el",
-        "rev": "7ae7366488eea598fcbd6915f2ff310945625514",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alphapapa",
-        "repo": "ement.el",
-        "type": "github"
-      }
-    },
-    "emacs-ement-extras": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1635276173,
-        "narHash": "sha256-rjT5D5K1aXswHMfGfR37TkQKzXcghFy6sxPUt8+xLJw=",
-        "owner": "akater",
-        "repo": "emacs-ement-extras",
-        "rev": "b3ae0336555a9beb19e1f6b01763f7dab1d6fd2c",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "akater",
-        "ref": "release",
-        "repo": "emacs-ement-extras",
-        "type": "gitlab"
-      }
-    },
-    "emacs-overlay": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1652440988,
-        "narHash": "sha256-XQjFmR5O8YJqF9zxNGcapqI+tTlZhLjwPllWkBFrmGw=",
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "rev": "672ed963c05977c629f0ec7521b4d347968cd201",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "type": "github"
-      }
-    },
-    "emacs-plz": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1652114532,
-        "narHash": "sha256-qfcVMoyYyyeXAwJNNxKaUhxVq1SQMFPhPuWRHGSVTV8=",
-        "owner": "alphapapa",
-        "repo": "plz.el",
-        "rev": "9156de9c59c1836139db1b600f4056454b42dfd2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alphapapa",
-        "repo": "plz.el",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -190,21 +60,6 @@
       "original": {
         "owner": "edolstra",
         "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "flake-utils": {
-      "locked": {
-        "lastModified": 1652372896,
-        "narHash": "sha256-lURGussfF3mGrFPQT3zgW7+RC0pBhbHzco0C7I+ilow=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "0d347c56f6f41de822a4f4c7ff5072f3382db121",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -243,32 +98,6 @@
         "type": "github"
       }
     },
-    "nix-on-droid": {
-      "inputs": {
-        "flake-utils": [
-          "utils"
-        ],
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1650613939,
-        "narHash": "sha256-x+OlhRDWXpqFZKmeEOE+vXbmt9kiCe35rKVBcJo3gxQ=",
-        "owner": "t184256",
-        "repo": "nix-on-droid",
-        "rev": "e7e7d1347ffa88f8f67852a58a94d339c7d58fa0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "t184256",
-        "repo": "nix-on-droid",
-        "type": "github"
-      }
-    },
     "nixgl": {
       "inputs": {
         "nixpkgs": [
@@ -304,20 +133,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1652252629,
-        "narHash": "sha256-SvT64apetqc8P5nYp1/fOZvUmHUPdPFUZbhSpKy+1aI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d2fc6856824cb87742177eefc8dd534bdb6c3439",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1651726670,
         "narHash": "sha256-dSGdzB49SEvdOJvrQWfQYkAefewXraHIV08Vz6iDXWQ=",
@@ -396,20 +211,13 @@
     },
     "root": {
       "inputs": {
-        "defmacro-gensym": "defmacro-gensym",
-        "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
-        "emacs-ement": "emacs-ement",
-        "emacs-ement-extras": "emacs-ement-extras",
-        "emacs-overlay": "emacs-overlay",
-        "emacs-plz": "emacs-plz",
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "nix-on-droid": "nix-on-droid",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",

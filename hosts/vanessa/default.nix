@@ -35,7 +35,7 @@ rec {
       nixos-hardware.common-cpu-intel-cpu-only
 
       ../../hardware/sound-pipewire.nix
-      ../../hardware/nvidia.nix
+#      ../../hardware/nvidia.nix
 
       # ./aarch64.nix
 
@@ -81,7 +81,7 @@ rec {
   home-manager.users.luxus = {
     imports = [
       ../../users/luxus/trusted
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
+ #     nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     xdg.mimeApps.enable = lib.mkForce false;
@@ -96,13 +96,13 @@ rec {
   };
 
   # hardware.enableRedistributableFirmware = true;
-  networking.hostName = "desktop"; # Define your hostname.
+  networking.hostName = "vanessa"; # Define your hostname.
   networking.networkmanager.enable = false;
   programs.thefuck.enable = true;
   time.hardwareClockInLocalTime = true;
-  users.users.luxus.packages = [ pkgs.retroarchBare ];
+  #users.users.luxus.packages = [ pkgs.retroarchBare ];
 
-  services.jellyfin.enable = true;
+  #services.jellyfin.enable = true;
 
   services.ipfs = {
     enable = true;
@@ -142,12 +142,6 @@ rec {
     enable = true;
   };
 
-  fileSystems."/media/gamedisk" =
-    {
-      device = "/dev/disk/by-uuid/A238EB6A38EB3BC3";
-      fsType = "ntfs";
-      options = [ "uid=1000,gid=100,rw,user,exec,umask=000" ];
-    };
 
   # networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [
@@ -218,7 +212,7 @@ rec {
 
     # We first mount the btrfs root to /mnt
     # so we can manipulate btrfs subvolumes.
-    mount -o subvol=/ /dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60 /mnt
+    mount -o subvol=/ /dev/disk/by-uuid/ /mnt
 
     # While we're tempted to just delete /root and create
     # a new snapshot from /root-blank, /root is already
@@ -277,5 +271,5 @@ rec {
     };
   };
 
-  services.sonarr.enable = true;
+  services.sonarr.enable = false;
 }

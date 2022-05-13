@@ -2,7 +2,7 @@
   description = "luxus's NixOS config";
   nixConfig.substituters = [
     "https://cache.nixos.org"
-    "https://luxus-nix-config.cachix.org"
+    "https://luxus.cachix.org"
     # "https://cache.ngi0.nixos.org"
     # "https://dendrite-demo-pinecone.cachix.org"
     "https://nix-community.cachix.org"
